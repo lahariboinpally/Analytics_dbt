@@ -40,12 +40,12 @@ models:
     # Applies to all files under models/example/
     example:
       +materialized: table
-    # staging:
-    #   +materialized: table
-    #   # +staging: table gives view, if we remove this gives as table
-
     staging:
-      # +database: '{{env_var("DBT_DATABASE","DBT_DEV_DB")}}'
-      +materialized: view
-      +schema: "STAGING"
+      +materialized: table
+      # +staging: table :gives view, if we remove this gives as table
+
+      staging:
+        +database: '{{env_var("DBT_DATABASE","DBT_DEV_DB")}}'
+        +materialized: view
+        +schema: "STAGING"
 
