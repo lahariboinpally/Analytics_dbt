@@ -3,4 +3,5 @@
 
 select *
 from {{ ref('my_first_dbt_model') }}
+-- from SNOWFLAKE_LEARNING_DB.dbt_lahariboinpally.my_first_dbt_model
 where id = 1
