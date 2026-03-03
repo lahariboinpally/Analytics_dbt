@@ -38,9 +38,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   analytics:
     # Applies to all files under models/example/
+<<<<<<< HEAD
     example:
       +materialized: table
     staging:
       +materialized: table
       # +staging: table gives view, if we remove this gives as table
 
+=======
+      STAGING:
+        +database: '{{env_var("DBT_DATABASE","DBT_DEV_DB")}}'
+        +materialized: view
+        +schema: "STAGING"
+>>>>>>> 99008e389e42d7a2fd0bb920055feecea672b0c9
