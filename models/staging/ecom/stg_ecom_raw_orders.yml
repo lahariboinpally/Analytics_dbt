@@ -1,0 +1,30 @@
+models:
+  - name: stg_ecom_raw_orders
+    description: Order data with basic cleaning and transformation applied, one row per order.
+    data_tests:
+      - dbt_utils.expression_is_true:
+          expression: "order_total - tax_paid = subtotal"
+    columns:
+      - name: order_id
+        description: The unique key for each order.
+        data_tests:
+          - not_null
+          - unique
+      - name: location_id
+        description: Name of the Location
+        data_tests:
+          - not_null
+          # - relationships:
+          #     field: location_id
+          #     to: ref('stg_locations')
+      - name: customer_id
+        description: Name of the Customer
+        data_tests:
+          - not_null
+          - relationships:
+              field: customer_id
+              to: ref('stg_ecom__raw_customers')
+      - name: ordered_at
+        description: Time at which Order was placed
+        data_tests:
+          - not_null
